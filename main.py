@@ -5,6 +5,7 @@ def count_batteries_by_usage(cycles):
   medcount=0
   highcount=0
   
+  # Main operation that counts battery types
   for val in cycles:
     # Battery capacity won't be less than zero
     if val >= 0 and val < 310:
@@ -17,6 +18,7 @@ def count_batteries_by_usage(cycles):
     else:
       print(f"Invalid entry in cycle. Skipped {val}")
   
+  # Returns battery counts as a dictionary
   return {
     "lowCount": lowcount,
     "mediumCount": medcount,
