@@ -1,9 +1,22 @@
 
 def count_batteries_by_usage(cycles):
+  #Initializing variables for low, med and high counts
+  lowcount=0
+  medcount=0
+  highcount=0
+  
+  for val in cycles:
+    if val < 310:
+      lowcount+=1
+    elif val >= 310 and val <= 929:
+      medcount+=1
+    else:
+      highcount+=1
+  
   return {
-    "lowCount": 0,
-    "mediumCount": 0,
-    "highCount": 0
+    "lowCount": lowcount,
+    "mediumCount": medcount,
+    "highCount": highcount
   }
 
 
