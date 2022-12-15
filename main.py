@@ -6,12 +6,16 @@ def count_batteries_by_usage(cycles):
   highcount=0
   
   for val in cycles:
-    if val < 310:
+    # Battery capacity won't be less than zero
+    if val >= 0 and val < 310:
       lowcount+=1
     elif val >= 310 and val <= 929:
       medcount+=1
-    else:
+    # Upper bound was not implemented since it was not mentioned in the problem statement.
+    elif val > 929:
       highcount+=1
+    else:
+      print(f"Invalid entry in cycle. Skipped {val}")
   
   return {
     "lowCount": lowcount,
@@ -28,10 +32,10 @@ def test_bucketing_by_number_of_cycles():
   assert(counts["highCount"] == 1)
 
   #Testing Boundary conditions
-  counts = count_batteries_by_usage([0, 309, 310, 929, 930])
+  counts = count_batteries_by_usage([-2, 0, 309, 310, 929, 930, 2000])
   assert(counts["lowCount"] == 2)
   assert(counts["mediumCount"] == 2)
-  assert(counts["highCount"] == 1)
+  assert(counts["highCount"] == 2)
   print("Done counting :)")
 
 
