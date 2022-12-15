@@ -26,6 +26,12 @@ def test_bucketing_by_number_of_cycles():
   assert(counts["lowCount"] == 2)
   assert(counts["mediumCount"] == 3)
   assert(counts["highCount"] == 1)
+
+  #Testing Boundary conditions
+  counts = count_batteries_by_usage([0, 309, 310, 929, 930])
+  assert(counts["lowCount"] == 2)
+  assert(counts["mediumCount"] == 2)
+  assert(counts["highCount"] == 1)
   print("Done counting :)")
 
 
